@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        #app{
+            margin: 0 auto;
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body class="align-items-center">
+    <div id="app">
+        <h1>My First Vue.js App</h1>
+        <p>{{ message }}</p>
+        <p>{{ name }} {{ name.length }}</p>
+        
+        <div class="col-6">
+            <p><input type="text" name="name" v-model="name" class="form-control"></p>
+            <button :class="btnClass" class="mr-5" v-on:click="btnChange">Submit </button> 
+            <button :class="active ? 'text-danger btn btn-dark' : 'text-black-50 btn btn-danger'" class="" @click="btnToggle">Submit</button>
+        </div>
+
+        <section class="py-5">
+            <h2>Lorem, ipsum dolor.</h2>
+            <ul>
+                <li>Finish Project <input type="checkbox" name="project" v-model="project"></li>
+                <li>Chapter 5 <input type="checkbox" name="chapter" v-model="chapter"></li>
+                <li>Done home work <input type="checkbox" name="work" v-model="work"></li>
+                <!-- <li v-for="item in 10">{{ item }}</li> -->
+            </ul>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-router@next"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue!',
+                    name: 'Azizul Haque',
+                    btnClass: 'btn btn-primary',
+                    active: false
+                }
+            },
+
+            mounted() {
+                setTimeout(() => {
+                    this.name = 'Azizul with Rita';
+                }, 5000);
+
+            },
+
+            methods: {
+                btnChange() {
+                    this.btnClass = 'btn btn-danger';
+
+                },
+                
+                btnToggle() {
+                    this.active = !this.active;
+                }
+            },
+        })
+
+        app.mount('#app');
+    </script>
+</body>
+</html>
